@@ -157,8 +157,18 @@ class NaoqiJointStates(NaoqiNode):
 
             t = self.torsoOdom.pose.pose.position
             q = self.torsoOdom.pose.pose.orientation
-            self.tf_br.sendTransform((t.x, t.y, t.z), (q.x, q.y, q.z, q.w),
+          
+
+--------------------------------------------------
+
+	#if self.odom_param = rospy.get_param('~odom_param', true)
+	  self.tf_br.sendTransform((t.x, t.y, t.z), (q.x, q.y, q.z, q.w),
                                      timestamp, self.base_frameID, self.torsoOdom.header.frame_id)
+
+         # else:self.odom_param = rospy.get_param('~odom_param', false)
+
+
+---------------------------------------------------
 
             self.torsoOdomPub.publish(self.torsoOdom)
 
